@@ -1,0 +1,557 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+$primary-color: #f7f9ff; // Slightly blue-tinted background
+$secondary-color: #ffffff; // White for cards/elements
+$accent-color: #007bff; // A vibrant blue
+$accent-color-secondary: #6c5ce7; // Secondary purple accent
+$accent-color-tertiary: #00cec9; // Teal accent
+$text-color: #333333;
+$heading-color: #222222;
+$border-radius: 16px; // Increased border radius
+$box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.05);
+
+.work {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  margin-top: 100px;
+  padding: 120px 0 80px;
+  overflow: hidden;
+  background-color: $primary-color;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    // background: radial-gradient(circle at 50% 50%, rgba($accent-color, 0.05) 0%, transparent 70%);
+    background: linear-gradient(135deg, #eef0f1, #7a9aa3);
+
+    pointer-events: none;
+    animation: subtlePulse 15s ease-in-out infinite;
+  }
+
+  // Responsive padding
+  @media (max-width: 768px) {
+    padding: 200px 0 60px;
+  }
+
+  .gradientOrbs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+
+    .orb1 {
+      position: absolute;
+      top: -200px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(51, 75, 211, 0.15) 0%,
+        rgba(51, 75, 211, 0) 70%
+      );
+      filter: blur(50px);
+      opacity: 0.7;
+    }
+
+    .orb2 {
+      position: absolute;
+      bottom: -150px;
+      left: -100px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(76, 104, 255, 0.1) 0%,
+        rgba(76, 104, 255, 0) 70%
+      );
+      filter: blur(60px);
+    }
+  }
+
+  .container {
+    position: relative;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+    z-index: 1;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba($accent-color, 0.5) 50%,
+        transparent 100%
+      );
+      border-radius: 3px;
+    }
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 60px;
+
+    h1 {
+      font-size: 4.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      // color: #1a1a1a;
+      color: $heading-color;
+
+      span {
+        background: linear-gradient(
+          120deg,
+          $accent-color 0%,
+          $accent-color-secondary 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 2.5rem;
+        padding-top: 1rem;
+
+        margin-bottom: 10px;
+      }
+    }
+
+    .headerUnderline {
+      height: 4px;
+      // background-color: #334BD3;
+      background: linear-gradient(
+        90deg,
+        $accent-color 0%,
+        $accent-color-secondary 100%
+      );
+      margin: 0 auto 20px;
+      border-radius: 2px;
+    }
+
+    p {
+      font-size: 1.25rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto;
+
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .filterContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    gap: 15px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .filterIcon {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #555;
+      font-weight: 500;
+
+      svg {
+        color: #334bd3;
+      }
+    }
+
+    .filterOptions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .filterButton {
+        padding: 8px 16px;
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 30px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #555;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          border-color: #334bd3;
+          color: #334bd3;
+        }
+
+        &.active {
+          background-color: #334bd3;
+          border-color: #334bd3;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .projectsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .projectCard {
+      background-color: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+        .projectOverlay {
+          opacity: 1;
+        }
+      }
+
+      &.featured {
+        grid-column: span 2;
+
+        @media (max-width: 768px) {
+          grid-column: auto;
+        }
+      }
+
+      .projectImageContainer {
+        position: relative;
+        height: 220px;
+        overflow: hidden;
+
+        .projectImage {
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          transition: transform 0.5s ease;
+        }
+
+        .projectOverlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(51, 75, 211, 0.85);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+
+          .viewProject {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px 20px;
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
+          }
+        }
+      }
+
+      .projectInfo {
+        padding: 20px;
+
+        h3 {
+          font-size: 1.25rem;
+          font-weight: 600;
+          margin-bottom: 8px;
+          color: #1a1a1a;
+        }
+
+        .projectCategory {
+          display: inline-block;
+          background-color: #f0f2ff;
+          color: #334bd3;
+          font-size: 0.85rem;
+          font-weight: 500;
+          padding: 4px 10px;
+          border-radius: 20px;
+          text-transform: capitalize;
+          margin-bottom: 15px;
+        }
+
+        .technologies {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+
+          .techBadge {
+            background-color: #f5f5f5;
+            color: #555;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+
+  .projectModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    // Add this to ensure modal is in the center of viewport
+    overflow-y: auto;
+
+    .modalOverlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .modalContent {
+      position: relative;
+      background-color: #fff;
+      width: 100%;
+      max-width: 1200px;
+      max-height: 100vh; // Limit height to 90% of viewport height
+      border-radius: 12px;
+      overflow: hidden;
+      z-index: 1010;
+      // overflow-y: auto;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      margin: auto; // Center in viewport
+      transform: translateY(0);
+
+      @media (min-width: 768px) {
+        flex-direction: row;
+      }
+
+      .closeButton {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.9);
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        color: #333;
+        cursor: pointer;
+        z-index: 1020;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+          background-color: #fff;
+          transform: scale(1.05);
+        }
+      }
+
+      .modalImageContainer {
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        position: relative;
+
+        @media (min-width: 768px) {
+          width: 50%;
+          height: auto;
+        }
+
+        .modalImage {
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      }
+
+      .modalDetails {
+        padding: 30px;
+        flex: 1;
+
+        h2 {
+          font-size: 1.8rem;
+          font-weight: 700;
+          margin-bottom: 10px;
+          color: #1a1a1a;
+        }
+
+        .categoryBadge {
+          display: inline-block;
+          background-color: #f0f2ff;
+          color: #334bd3;
+          font-size: 0.9rem;
+          font-weight: 500;
+          padding: 5px 12px;
+          border-radius: 20px;
+          text-transform: capitalize;
+          margin-bottom: 20px;
+        }
+
+        .projectDescription {
+          font-size: 1rem;
+          line-height: 1.6;
+          color: #555;
+          margin-bottom: 25px;
+        }
+
+        .techStackSection {
+          margin-bottom: 30px;
+
+          h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+          }
+
+          .techStack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            .techBadge {
+              background-color: #f5f5f5;
+              color: #555;
+              padding: 6px 12px;
+              border-radius: 6px;
+              font-size: 0.9rem;
+              font-weight: 500;
+            }
+          }
+        }
+
+        .projectLinks {
+          display: flex;
+          gap: 15px;
+          flex-wrap: wrap;
+
+          .projectLink {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            color: #312b4e;
+
+            svg {
+              transition: transform 0.3s ease;
+            }
+
+            &:hover svg {
+              transform: translateX(3px);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .callToAction {
+    background-color: #fff;
+    padding: 60px 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    position: relative;
+    margin-top: 30px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #334bd3, #4c68ff);
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #1a1a1a;
+
+      @media (max-width: 768px) {
+        font-size: 1.5rem;
+      }
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto 30px;
+
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
+    }
+
+    .ctaButton {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      background: linear-gradient(90deg, #334bd3, #4c68ff);
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+  }
+}

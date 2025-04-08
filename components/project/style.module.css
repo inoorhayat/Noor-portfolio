@@ -1,0 +1,197 @@
+.projects {
+  display: flex;
+  align-items: center;
+  padding: 0 200px;
+  flex-direction: column;
+  margin-top: 300px;
+  width: 100%;
+  box-sizing: border-box;
+
+  .body {
+    max-width: 1400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 100px;
+  }
+
+  .modalContainer {
+    height: 350px;
+    width: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 3;
+  }
+
+  .modalSlider {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    transition: top 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  .modal {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .cursor,
+  .cursorLabel {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #455ce9;
+    color: white;
+    position: fixed;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 300;
+    pointer-events: none;
+  }
+
+  .cursorLabel {
+    background-color: transparent;
+  }
+}
+
+/* Large screens */
+@media (max-width: 1200px) {
+  .projects {
+    padding: 0 150px;
+    margin-top: 250px;
+
+    .body {
+      margin-bottom: 80px;
+    }
+
+    .modalContainer {
+      height: 320px;
+      width: 360px;
+    }
+
+    .cursor,
+    .cursorLabel {
+      width: 70px;
+      height: 70px;
+      font-size: 13px;
+    }
+  }
+}
+
+/* Medium screens */
+@media (max-width: 1020px) {
+  .projects {
+    padding: 0 100px;
+    margin-top: 200px;
+
+    .body {
+      margin-bottom: 60px;
+    }
+
+    .modalContainer {
+      height: 300px;
+      width: 340px;
+    }
+
+    .cursor,
+    .cursorLabel {
+      width: 60px;
+      height: 60px;
+      font-size: 12px;
+    }
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .projects {
+    padding: 0 70px;
+    margin-top: 150px;
+
+    .body {
+      margin-bottom: 50px;
+    }
+
+    .modalContainer {
+      height: 280px;
+      width: 320px;
+    }
+
+    .cursor,
+    .cursorLabel {
+      width: 50px;
+      height: 50px;
+      font-size: 11px;
+    }
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .projects {
+    padding: 0 20px;
+    margin-top: 100px;
+
+    .body {
+      margin-bottom: 40px;
+      margin-top: -300px;
+    }
+
+    .modalContainer {
+      height: 250px;
+      width: 280px;
+    }
+
+    .cursor,
+    .cursorLabel {
+      width: 40px;
+      height: 40px;
+      font-size: 10px;
+    }
+  }
+}
+
+/* Small phones */
+@media (max-width: 390px) {
+  .projects {
+    margin-top: 80px;
+
+    .modalContainer {
+      height: 200px;
+      width: 240px;
+    }
+  }
+}
+
+.viewLink {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  pointer-events: auto;
+}
+
+.cursorLabel {
+  pointer-events: none; /* Let the Link handle clicks */
+}

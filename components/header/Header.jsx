@@ -1,0 +1,127 @@
+"use client";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import style from "./styleheader.module.scss";
+import Navbar from "../navbar/Navbar";
+import { AnimatePresence } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Megnatic from "../../common/magnetic";
+import Buttonx from "../../common/roundedbutton";
+import Link from "next/link"; // Import Link from Next.js
+
+const Header = () => {
+  const [isActive, setIsActive] = useState(false);
+  const [isMenu, setMenu] = useState(false); // Ensure this is declared only once
+  const targertBurger = useRef(null);
+  
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to(targertBurger.current, {
+      scrollTrigger: {
+        trigger: document.documentElement,
+        start: 0,
+        end: window.innerHeight,
+        onLeave: () => {
+          gsap.to(targertBurger.current, {
+            scale: 1,
+            duration: 0.25,
+            ease: "power1.out",
+          });
+        },
+        onEnterBack: () => {
+          gsap.to(targertBurger.current, {
+            scale: 0,
+            duration: 0.25,
+            ease: "power1.out",
+          });
+        },
+      },
+    });
+  }, []);
+
+  useEffect(() => {
+    setMenu(false); // Ensure menu is closed on initial render
+  }, []);
+  
+  const toggleMenu = () => {
+    setMenu((prev) => !prev);
+  };
+  
+  return (
+    <>
+      <div className={style.header}>
+        <Megnatic>
+          <Link href="/" className={style.logo}>
+            {" "}
+            {/* Redirect to Home page */}
+            <p className={style.copyright}>©</p>
+            <div className={style.name}>
+              <p className={style.codeby}>Code by</p>
+              <p className={style.dennis}>Noor</p>
+              <p className={style.snellenberg}>Hayat</p>
+            </div>
+          </Link>
+        </Megnatic>
+
+        <div className={style.navContainer}>
+          <Megnatic>
+            <div className={`${style.menuName}`} onClick={toggleMenu}>
+              <p>Menu</p>
+              <div className={style.MenuEndicator}></div>
+            </div>
+          </Megnatic>
+
+          <AnimatePresence mode="exit">
+            {isMenu && <Navbar toggleMenu={toggleMenu} />}
+          </AnimatePresence>
+
+          <div className={`${style.nav} ${isMenu ? style.shownav : ""}`}>
+            <Megnatic>
+              <Link href="/work" className={style.el}>
+                {" "}
+                {/* Redirect to Work page */}
+                <p>Work</p>
+                <div className={style.endicator}></div>
+              </Link>
+            </Megnatic>
+            <Megnatic>
+              <Link href="/about" className={style.el}>
+                {" "}
+                {/* Redirect to About page */}
+                <p>About</p>
+                <div className={style.endicator}></div>
+              </Link>
+            </Megnatic>
+            <Megnatic>
+              <Link href="/contact" className={style.el}>
+                {" "}
+                {/* Redirect to Contact page */}
+                <p>Contact</p>
+                <div className={style.endicator}></div>
+              </Link>
+            </Megnatic>
+          </div>
+        </div>
+
+        <div ref={targertBurger} className={style.headerButtonContainer}>
+          <Buttonx
+            onClick={() => {
+              setIsActive(!isActive);
+            }}
+            className={style.button}
+          >
+            <div
+              className={`${style.burger} ${
+                isActive ? style.burgerActive : ""
+              }`}
+            ></div>
+          </Buttonx>
+        </div>
+
+        <AnimatePresence mode="exit">{isActive && <Navbar toggleMenu={toggleMenu} />}</AnimatePresence>
+      </div>
+    </>
+  );
+};
+
+export default Header;
