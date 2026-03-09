@@ -83,7 +83,7 @@ updates. Contributed to improved system stability and operational efficiency (ap
       field: "Computer Science",
       institution: "Delhi University",
       period: "2021 - 2024",
-      achievements: "CGPA: 7.1/10, Top 10% of the class",
+      achievements: "CGPA: 7.3/10, Top 10% of the class",
       color: "#0984e3", // Added color for visual interest
     },
     {
