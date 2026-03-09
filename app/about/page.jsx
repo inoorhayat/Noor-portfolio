@@ -40,6 +40,17 @@ const About = () => {
   ];
 
   const experience = [
+
+    {
+      title: "Full stack Web developer",
+      company: "Composite School Pasonda Naveen",
+      period: "jan 2025 - oct 2025",
+      description:
+   "Designed, developed, and maintained the school’s web applications and backend services. Managed backend logic, APIs, data handling, and system troubleshooting with regular deployment of
+updates. Contributed to improved system stability and operational efficiency (approximately 30
+• Collaborated with staff and faculty to enhance digital workflows and system efficiency, Improved the institution’s overall digital infrastructure through continuous updates and maintenance.",
+      color: "#6c5ce7", // Added color for visual interest
+    },
     {
       title: "Full Stack Developer Intern",
       company: "Unified Mentor",
